@@ -1,0 +1,26 @@
+version: '3.9'
+services:
+  tecklog:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/tecklog
+    ports:
+      - "3500:3000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    volumes:
+      - db-storage:/var/lib/postgresql/data
+      - ./db/initdb:/docker-entrypoint-initdb.d
+
+volumes:
+  db-storage:
+

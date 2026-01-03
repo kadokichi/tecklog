@@ -28,5 +28,7 @@ module Tecklog
       g.helper false      # helperファイルを自動生成しない
       g.test_framework :rspec # テストフレームワークをrspecに設定
     end
+
+    config.i18n.default_locale = :ja
   end
 end

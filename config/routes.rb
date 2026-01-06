@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts, only: [:index, :new, :create, :show, :destroy]
   devise_for :users
   root "home#top"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

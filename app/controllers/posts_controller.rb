@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create] # ログインしているかどうかを判断
 
   def index
+    @posts = Post.limit(10).order(created_at: :desc)
   end
 
   def show
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = t('flash.posts.create.success') # 成功時のフラッシュメッセージ
-      redirect_to root_path # 一時的にトップページへリダイレクト(後に修正)
+      redirect_to posts_path # 一時的にトップページへリダイレクト(後に修正)
     else
       flash[:alert] = t('flash.posts.create.failure') # 失敗時のフラッシュメッセージ
       render :new # 投稿画面を再表示

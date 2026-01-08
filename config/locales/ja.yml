@@ -4,3 +4,5 @@ ja:
       create:
         success: "投稿しました"
         failure: "投稿に失敗しました"
+      delete:
+        success: "投稿が削除されました"
